@@ -9,8 +9,47 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var count: Int = 1
     var body: some View {
-        Text("Hello, World!")
+        VStack(alignment: .center) {
+            Text("current count: \(count)").font(.largeTitle).padding()
+            HStack(alignment: .center) {
+                Button(action: {
+                    if (self.count < 100) {
+                        self.count += 1
+                    }
+                }) {
+                    if (self.count < 100) {
+                        Text("+ Increment")
+                        .bold()
+                        .font(.headline)
+                        .padding()
+                    } else {
+                        Text("+ Increment")
+                        .disabled(true)
+                        .font(.headline)
+                        .padding()
+                    }
+                }
+                Button(action: {
+                    if (self.count > 1) {
+                        self.count -= 1
+                    }
+                }) {
+                    if (self.count > 1) {
+                        Text("- Decrement")
+                            .bold()
+                            .font(.headline)
+                            .padding()
+                    } else {
+                        Text("- Decrement")
+                            .disabled(true)
+                            .font(.headline)
+                            .padding()
+                    }
+                }
+            }
+        }
     }
 }
 
